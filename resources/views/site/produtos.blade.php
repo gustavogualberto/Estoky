@@ -25,7 +25,7 @@
             </div>
 
             {{-- dashboard --}}
-            <div class="col-12 col-md-9 col-lg-10">
+            <div class="col-12 col-md-9 col-lg-10 btn-conteudo">
                 <div class="container-fluid mt-4  ">
                     <div class="row">
 
@@ -100,7 +100,7 @@
                     </div>
 
 
-                    <!-- Modal visualizar-->
+                    <!-- Modal adicionar-->
                     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
                         aria-hidden="true">
                         <div class="modal-dialog modal-xl">
@@ -114,7 +114,6 @@
                                     <form action="{{ route('salvar.produto') }}" method="POST">
                                         @csrf
                                         <div class="modal-body">
-
 
                                             <div class="container">
                                                 <div class="row">
@@ -148,10 +147,10 @@
                                                             <select class="form-select" id="inputGroupSelect04"
                                                                 aria-label="Example select with button addon"
                                                                 name="categoria">
-                                                                <option selected>Selecione uma categoria</option>
-                                                                <option value="1">One</option>
-                                                                <option value="2">Two</option>
-                                                                <option value="3">Three</option>
+                                                                <option selected>Selecione uma categoria</  option>
+                                                                @foreach($categorias as $categoria)
+                                                                <option value="{{$categoria->id}}">{{$categoria->categoria}}</option>
+                                                                @endforeach
                                                             </select>
                                                         </div>
                                                         <div class="mt-3">
@@ -257,7 +256,7 @@
                     <table class="table table-hover ">
                         <thead>
                             <tr>
-                                <th class="fw-normal">NOME</th>
+                                <th class="fw-normal">PRODUTO</th>
                                 <th class="fw-normal">CÓDIGO</th>
                                 <th class="fw-normal">FORNECEDOR</th>
                                 <th class="fw-normal">CATEGORIA</th>
@@ -295,9 +294,9 @@
 
                     {{-- TODO Paginação --}}
 
-                    @if (count($produtos) == 0)
+                    @if ($search && count($produtos) == 0)
                         <p class="text-center">Não há resultados para sua pesquisa: "{{ $search }}".</p>
-                    @elseif ($search = '')
+                    @else
                         <p class="text-center">Você não possui produtos cadastrados</p>
                     @endif
                 </div>

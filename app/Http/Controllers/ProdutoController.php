@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Produto;
+use App\Models\Categoria;
 
 class ProdutoController extends Controller
 {
@@ -13,20 +14,24 @@ class ProdutoController extends Controller
     {
         $search = Request('search');
 
-        if($search){
+        if ($search) {
             $produtos = Produto::where([
-                ['nome_produto', 'like' , '%' . $search . '%']
+                ['nome_produto', 'like', '%' . $search . '%']
             ])->get();
-        }else{
+        } else {
             $produtos = Produto::orderBy('nome_produto')->get();
         }
-
-        return view('site.produtos', compact('produtos', 'search'));
+        $categorias = Categoria::all();
+        
+        return view('site.produtos', compact('produtos', 'search', 'categorias'));
     }
 
     public function salvar(Request $req)
     {
         $dados = $req->all();
+
+        $dados['categoria_id'] = $req -> categoria_id;
+
         Produto::create($dados);
         return redirect()->route('site.produtos');
     }
@@ -35,5 +40,4 @@ class ProdutoController extends Controller
     {
         return view('site.estoque');
     }
-
 }

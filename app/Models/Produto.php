@@ -11,6 +11,7 @@ class Produto extends Model
     protected $fillable = [
         'nome_produto',
         'imagem',
+         'categoria_id',
         'categoria',
         'quantidade',
         'preco_compra',
@@ -21,4 +22,10 @@ class Produto extends Model
         'fornecedor',
         'codigo_de_barras',
     ];
+
+    public function Categoria()
+    {
+        return $this -> belongsTo('App\Models\Categoria');
+    }
+
 }
