@@ -1,0 +1,36 @@
+.bg-white-nav {
+    background-color: white;
+}
+
+.btn-menu {
+    background-color: rgb(255, 255, 255);
+    width: 250px;
+}
+
+.btn-menu:hover {
+    background-color: rgb(235, 235, 235);
+}
+.w-menu-white {
+    background-color: white;
+}
+
+.count-data {
+    background-color: white;
+    width: 50px;
+    height: 98px;
+}
+
+.cd-font {
+    font-size: small;
+}
+
+.btn-principal {
+    background-color: #7a1798;
+
+    color: white;
+}
+
+.btn-principal:hover {
+    background-color: #4f0b64;
+    color: white;
+}
