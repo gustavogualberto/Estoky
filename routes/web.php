@@ -21,3 +21,6 @@ Route::post('/salvar', [ProdutoController::class, 'salvar'])->name('salvar.produ
 
 Route::get('/estoque', [ProdutoController::class, 'estoque'])->name('site.estoque');
 
+Route::get('/total/produtos/ativos', [ProdutoController::class, 'ativosList'])->name('site.ativos');
+
+

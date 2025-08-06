@@ -3,17 +3,20 @@
 }
 
 .btn-menu {
-    background-color: rgb(255, 255, 255);
     width: 250px;
-}
-
-.btn-conteudo{
-    background-color: #f6eef8;
+    color: #605C65;
 }
 
 .btn-menu:hover {
-    background-color: rgb(235, 235, 235);
+    background-color: #F6F0FF;
+    color: #605C65;
 }
+
+.btn-conteudo{
+    background-color: #f7f3fc;
+}
+
+
 .w-menu-white {
     background-color: white;
     padding-right: 1.5rem;
@@ -30,13 +33,13 @@
 }
 
 .btn-principal {
-    background-color: #7a1798;
+    background-color: #8131f8;
 
     color: white;
 }
 
 .btn-principal:hover {
-    background-color: #4f0b64;
+    background-color: #521aa5;
     color: white;
 }
 
@@ -44,4 +47,31 @@
     border-color: #d8abe6;
     box-shadow:0px 0px 0px 0.25rem #e9d3f0;
 
+}
+
+.form-select:focus{
+    border-color: #d8abe6;
+    box-shadow:0px 0px 0px 0.25rem #e9d3f0;
+}
+
+.required-red{
+    color: red;
+}
+
+.table-itens-secondary-color{
+    color: rgb(58, 58, 58) !important;
+}
+
+.btn-itens {
+    background-color: #605C65;
+    color: white;
+}
+
+.btn-itens:hover {
+    background-color: rgb(74, 72, 75);
+    color: white;
+}
+
+.cursor-pointer {
+    cursor: pointer;
 }

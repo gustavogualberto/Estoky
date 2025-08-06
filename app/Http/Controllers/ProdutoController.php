@@ -30,6 +30,12 @@ class ProdutoController extends Controller
     {
         $dados = $req->all();
 
+        if(isset($dados['status'])){
+            $dados['status'] = 1; //se status for marcado envia 1 pro banco
+        }else{ //caso contrário envia 0
+            $dados['status']= 0;
+        }
+
         $dados['categoria_id'] = $req -> categoria_id;
 
         Produto::create($dados);
@@ -39,5 +45,10 @@ class ProdutoController extends Controller
     public function estoque()
     {
         return view('site.estoque');
+    }
+
+    public function ativosList()
+    {
+        return view ('site.listagem.produtosAtivos');
     }
 }
