@@ -56,7 +56,7 @@
                                      <div class="col">
                                          <div class="mb-3">
                                              <label for="exampleFormControlInput1"
-                                                 class="form-label"q>Fornecedor</label>
+                                                 class="form-label">Fornecedor</label>
                                              <input type="text" class="form-control" id="exampleFormControlInput1"
                                                  placeholder="Digite o código do produto" name="fornecedor">
                                          </div>

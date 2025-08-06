@@ -49,6 +49,46 @@ class ProdutoController extends Controller
 
     public function ativosList()
     {
-        return view ('site.listagem.produtosAtivos');
+        $search = Request('search');
+
+        if ($search) {
+            $produtos = Produto::where([
+                ['nome_produto', 'like', '%' . $search . '%']
+            ])->get();
+        } else {
+            $produtos = Produto::orderBy('nome_produto')->get();
+        }
+
+        return view ('site.listagem.produtosAtivos', compact('produtos', 'search'));
+    }
+
+     public function inativosList()
+    {
+        $search = Request('search');
+
+        if ($search) {
+            $produtos = Produto::where([
+                ['nome_produto', 'like', '%' . $search . '%']
+            ])->get();
+        } else {
+            $produtos = Produto::orderBy('nome_produto')->get();
+        }
+
+        return view ('site.listagem.produtosInativos', compact('produtos', 'search'));
+    }
+
+    public function semEstoque()
+    {
+        $search = Request('search');
+
+        if ($search) {
+            $produtos = Produto::where([
+                ['nome_produto', 'like', '%' . $search . '%']
+            ])->get();
+        } else {
+            $produtos = Produto::orderBy('nome_produto')->get();
+        }
+
+        return view ('site.listagem.produtosSemEstoque', compact('produtos', 'search'));
     }
 }

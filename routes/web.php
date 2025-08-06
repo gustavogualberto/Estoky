@@ -23,4 +23,8 @@ Route::get('/estoque', [ProdutoController::class, 'estoque'])->name('site.estoqu
 
 Route::get('/total/produtos/ativos', [ProdutoController::class, 'ativosList'])->name('site.ativos');
 
+Route::get('/total/produtos/inativos', [ProdutoController::class, 'inativosList'])->name('site.inativos');
+
+Route::get('/total/produtos/sem-estoque', [ProdutoController::class, 'semEstoque'])->name('site.sem-estoque');
+
 

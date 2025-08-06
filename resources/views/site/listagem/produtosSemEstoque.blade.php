@@ -34,7 +34,7 @@
 
             <div class="row ms-1">
                 <div class="col-6 justify-content-start ">
-                    <h6>Total produtos ativos</h6>
+                    <h6>Total produtos sem estoque</h6>
                     <p>Gerencie seus itens de estoque e níveis de inventário</p>
                 </div>
             </div>
@@ -58,7 +58,7 @@
                     </thead>
                     <tbody>
                         @foreach ($produtos as $produto)
-                            @if ($produto->status == 1)
+                            @if ($produto->quantidade == 0)
                                 <tr class="align-middle ">
                                     <td class="fw-bold table-itens-secondary-color"><img
                                             src="{{ asset('/img/produtos.svg') }}" alt=""
@@ -98,8 +98,6 @@
             </div>
 
         </div>
-
-
 
     </div>
 @endsection

@@ -23,68 +23,7 @@
             </div>
 
             {{-- dashboard --}}
-            <div class="col-12 col-md-9 col-lg-10 btn-conteudo">
-                <div class="container-fluid mt-4  ">
-                    <div class="row">
-
-                        <div class="col count-data me-2 shadow-sm p-3 mb-5 bg-body-light rounded bg-white-nav cursor-pointer">
-                            <div class="container text-start ">
-                                <a href="{{route('site.ativos')}}" class="text-reset text-decoration-none">
-                                <div class="row">
-                                    <div class="col-8 p-0" >
-                                        <p class="text-secondary cd-font">Total de produtos</p>
-                                        <h4>{{ count($produtos) }}</h4>
-                                    </div>
-                                    <div class="col-4 d-flex justify-content-end align-items-center">
-                                        <img src="{{ asset('/img/total.svg') }}" alt="">
-                                    </div>
-                                </div>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="col count-data me-2 shadow-sm p-3 mb-5 bg-body-light rounded bg-white-nav">
-
-                            <div class="container text-start">
-                                <div class="row">
-                                    <div class="col-8 p-0">
-                                        <p class="text-secondary cd-font">Produtos ativos</p>
-                                        <h4>{{$produtos->where('status', 1)->count()}}</h4>
-                                    </div>
-                                    <div class="col-4 d-flex justify-content-end align-items-center">
-                                        <img src="{{ asset('/img/ativos.svg') }}" alt="">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col count-data me-2 shadow-sm p-3 mb-5 bg-body-light rounded bg-white-nav">
-
-                            <div class="container text-start">
-                                <div class="row">
-                                    <div class="col-8 p-0">
-                                        <p class="text-secondary cd-font">Produtos inativos</p>
-                                        <h4>{{$produtos->where('quantidade', 0)->count()}}</h4>
-                                    </div>
-                                    <div class="col-4 d-flex justify-content-end align-items-center">
-                                        <img src="{{ asset('/img/inativos.svg') }}" alt="">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col count-data me-2 shadow-sm p-3 mb-5 bg-body-light rounded bg-white-nav">
-                            <div class="container text-start">
-                                <div class="row">
-                                    <div class="col-8 p-0">
-                                        <p class="text-secondary cd-font">Fora de estoque</p>
-                                        <h4>{{ $produtos->where('quantidade', 0)->count() }}</h4>
-                                    </div>
-                                    <div class="col-4 d-flex justify-content-end align-items-center">
-                                        <img src="{{ asset('/img/pendentes.svg') }}" alt="">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            @include('_includes.listagem')
 
 
                 <div class="row ms-1">
@@ -134,7 +73,7 @@
 
                                     {{-- TODO funcionalidades botões --}}
 
-
+                                    {{--TODO tirar styles inline--}}
                                     <td><a href="" class="text-secondary" data-bs-toggle="modal"
                                             data-bs-target="#exampleModal"><i class="bi bi-search btn btn-itens" style="padding: 4px 8px"></i></a>
                                         <a href="" class="text-secondary"><i class="bi bi-pencil-fill btn btn-itens" style="padding: 4px 8px"></i></a>

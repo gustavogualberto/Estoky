@@ -22,16 +22,11 @@
             <div class="container-fluid">
                 <a class="navbar-brand ms-5 h-25 w-auto" href="/"><img src="{{ asset('/img/logo.png') }}"
                         alt="" style="height: 40px;"></a>
-                <form class="d-flex" action="/" method="GET" role="search">
+                <form class="d-flex" action="" method="GET" role="search">
                     <input class="form-control me-5" name="search" id="search" type="search"
                         placeholder="Pesquisar em produtos" aria-label="Search" />
                 </form>
             </div>
         </nav>
-
-
-
-
-
 
     </header>
