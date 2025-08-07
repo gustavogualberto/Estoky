@@ -79,7 +79,11 @@
                                 <p class="text-secondary cd-font">Fora de estoque</p>
                                 @if (Route::currentRouteName() == 'site.sem-estoque')
                                     <h4>{{ $produtos->where('quantidade', 0)->count() }}</h4>
-                                @else
+                                @elseif(Route::currentRouteName() == 'site.ativos')
+                                    <h4>{{ $produtos->where('quantidade', 0)->where('status', 1)->count() }}</h4>
+                                @elseif(Route::currentRouteName() == 'site.inativos')
+                                    <h4>{{ $produtos->where('quantidade', 0)->where('status', 0)->count() }}</h4>
+                                @elseif(Route::currentRouteName() == 'site.produtos')
                                     <h4>{{ $produtos->where('quantidade', 0)->count() }}</h4>
                                 @endif
                             </div>
