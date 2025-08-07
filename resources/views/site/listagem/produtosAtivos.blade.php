@@ -91,9 +91,9 @@
                 {{-- TODO Paginação --}}
 
                 @if ($search && count($produtos) == 0)
-                    <p class="text-center">Não há resultados para sua pesquisa: "{{ $search }}".</p>
+                    <p class="text-center text-secondary">Não há resultados para sua pesquisa: "{{ $search }}".</p>
                 @elseif (count($produtos) == 0)
-                    <p class="text-center">Você não possui produtos cadastrados.</p>
+                    <p class="text-center text-secondary">Você não possui produtos cadastrados.</p>
                 @endif
             </div>
 
