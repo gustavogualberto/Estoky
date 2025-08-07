@@ -7,8 +7,7 @@
                 {{-- menu lateral --}}
                 <p class=" fw-bold mt-3 ">MENU PRINCIPAL</p>
                 <div class="row mt-2 ms-2">
-                    <button class="btn btn-menu text-start d-flex align-items-center"><img src="{{ asset('/img/home.svg') }}"
-                            alt="" class="me-2"> Dashboard</button>
+                    <button class="btn btn-menu text-start d-flex align-items-center" ><img src="{{ asset('/img/home.svg') }}" alt="" class="me-2"> Dashboard</button>
                 </div>
                 <div class="row mt-2 ms-2">
                     <a href="{{ route('site.produtos') }}" class="btn btn-menu text-start d-flex align-items-center"><img

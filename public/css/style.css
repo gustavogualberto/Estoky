@@ -7,6 +7,11 @@
     color: #605C65;
 }
 
+.btn-menu-active {
+    width: 250px;
+    color: #605C65;
+}
+
 .btn-menu:hover {
     background-color: #F6F0FF;
     color: #605C65;

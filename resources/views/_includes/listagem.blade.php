@@ -83,6 +83,8 @@
                                     <h4>{{ $produtos->where('quantidade', 0)->where('status', 1)->count() }}</h4>
                                 @elseif(Route::currentRouteName() == 'site.inativos')
                                     <h4>{{ $produtos->where('quantidade', 0)->where('status', 0)->count() }}</h4>
+                                @elseif(Route::currentRouteName() == 'site.estoque')
+                                    <h4>{{ $produtos->where('quantidade', 0)->count() }}</h4>
                                 @elseif(Route::currentRouteName() == 'site.produtos')
                                     <h4>{{ $produtos->where('quantidade', 0)->count() }}</h4>
                                 @endif

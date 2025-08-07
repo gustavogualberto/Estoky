@@ -6,84 +6,178 @@
                 {{-- menu lateral --}}
                 <p class=" fw-bold mt-3 ">MENU PRINCIPAL</p>
                 <div class="row mt-2 ms-2">
-                    <a class="btn btn-menu text-start "> <i class="bi bi-house-door-fill"></i> Dashboard</a>
+                    <button class="btn btn-menu text-start d-flex align-items-center"><img src="{{ asset('/img/home.svg') }}"
+                            alt="" class="me-2"> Dashboard</button>
                 </div>
                 <div class="row mt-2 ms-2">
-                    <a href="{{ route('site.produtos') }}" class="btn btn-menu text-start"> <i class="bi bi-bag-fill"></i>
-                        Produtos</a>
+                    <a href="{{ route('site.produtos') }}" class="btn btn-menu text-start d-flex align-items-center"><img
+                            src="{{ asset('/img/orders.svg') }}" alt="" class="me-2"> Produtos</a>
                 </div>
                 <div class="row mt-2 ms-2">
-                    <a class="btn btn-menu text-start"> <i class="bi bi-card-checklist"></i> Estoque</a>
+                    <a href="{{ route('site.estoque') }}" class="btn btn-menu text-start d-flex align-items-center"><img
+                            src="{{ asset('/img/garage_door.svg') }}" alt="" class="me-2"> Estoque</a>
                 </div>
                 <div class="row mt-2 ms-2">
-                    <a class="btn btn-menu text-start "> <i class="bi bi-truck"></i> Fornecedores</a>
+                    <a class="btn btn-menu text-start d-flex align-items-center"><img
+                            src="{{ asset('/img/local_shipping.svg') }}" alt="" class="me-2"> Fornecedores</a>
                 </div>
                 <div class="row mt-2 ms-2">
-                    <a class="btn btn-menu text-start"> <i class="bi bi-piggy-bank-fill"></i> Movimentações</a>
+                    <a class="btn btn-menu text-start d-flex align-items-center"><img
+                            src="{{ asset('/img/request_quote.svg') }}" alt="" class="me-2"> Movimentações</a>
                 </div>
             </div>
 
 
-            <div class="col-12 col-md-9 col-lg-10">
-                <div class="container-fluid mt-4  ">
-                    <div class="row">
+            @include('_includes.listagem')
 
-                        <div class="col count-data me-2 shadow-sm p-3 mb-5 bg-body-light rounded bg-white-nav">
-                            <div class="container text-start">
-                                <div class="row">
-                                    <div class="col-8 p-0">
-                                        <p class="text-secondary cd-font">Total de produtos</p>
-                                        <h4>0</h4>
-                                    </div>
-                                    <div class="col-4 d-flex justify-content-end align-items-center">
-                                        <img src="{{ asset('/img/total.svg') }}" alt="">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col count-data me-2 shadow-sm p-3 mb-5 bg-body-light rounded bg-white-nav">
-
-                            <div class="container text-start">
-                                <div class="row">
-                                    <div class="col-8 p-0">
-                                        <p class="text-secondary cd-font">Estoque Baixo</p>
-                                        <h4>0</h4>
-                                    </div>
-                                    <div class="col-4 d-flex justify-content-end align-items-center">
-                                        <img src="{{ asset('/img/ativos.svg') }}" alt="">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col count-data me-2 shadow-sm p-3 mb-5 bg-body-light rounded bg-white-nav">
-
-                            <div class="container text-start">
-                                <div class="row">
-                                    <div class="col-8 p-0">
-                                        <p class="text-secondary cd-font">Valor Total</p>
-                                        <h4>0</h4>
-                                    </div>
-                                    <div class="col-4 d-flex justify-content-end align-items-center">
-                                        <img src="{{ asset('/img/inativos.svg') }}" alt="">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col count-data me-2 shadow-sm p-3 mb-5 bg-body-light rounded bg-white-nav">
-                            <div class="container text-start">
-                                <div class="row">
-                                    <div class="col-8 p-0">
-                                        <p class="text-secondary cd-font">Fornecedores</p>
-                                        <h4>0</h4>
-                                    </div>
-                                    <div class="col-4 d-flex justify-content-end align-items-center">
-                                        <img src="{{ asset('/img/pendentes.svg') }}" alt="">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <div class="container">
+                <div id="graficoVendas" style="width: 100%; height: 400px;"></div>
+                <script>
+                    let base = +new Date(2016, 9, 3);
+                    let oneDay = 24 * 3600 * 1000;
+                    let valueBase = Math.random() * 300;
+                    let valueBase2 = Math.random() * 50;
+                    let data = [];
+                    let data2 = [];
+                    for (var i = 1; i < 10; i++) {
+                        var now = new Date((base += oneDay));
+                        var dayStr = [now.getFullYear(), now.getMonth() + 1, now.getDate()].join('-');
+                        valueBase = Math.round((Math.random() - 0.5) * 20 + valueBase);
+                        valueBase <= 0 && (valueBase = Math.random() * 300);
+                        data.push([dayStr, valueBase]);
+                        valueBase2 = Math.round((Math.random() - 0.5) * 20 + valueBase2);
+                        valueBase2 <= 0 && (valueBase2 = Math.random() * 50);
+                        data2.push([dayStr, valueBase2]);
+                    }
+                    option = {
+                        title: {
+                            left: 'center',
+                            text: 'Tootip and dataZoom on Mobile Device'
+                        },
+                        legend: {
+                            top: 'bottom',
+                            data: ['Intention']
+                        },
+                        tooltip: {
+                            triggerOn: 'none',
+                            position: function(pt) {
+                                return [pt[0], 130];
+                            }
+                        },
+                        toolbox: {
+                            left: 'center',
+                            itemSize: 25,
+                            top: 55,
+                            feature: {
+                                dataZoom: {
+                                    yAxisIndex: 'none'
+                                },
+                                restore: {}
+                            }
+                        },
+                        xAxis: {
+                            type: 'time',
+                            axisPointer: {
+                                value: '2016-10-7',
+                                snap: true,
+                                lineStyle: {
+                                    color: '#7581BD',
+                                    width: 2
+                                },
+                                label: {
+                                    show: true,
+                                    formatter: function(params) {
+                                        return echarts.format.formatTime('yyyy-MM-dd', params.value);
+                                    },
+                                    backgroundColor: '#7581BD'
+                                },
+                                handle: {
+                                    show: true,
+                                    color: '#7581BD'
+                                }
+                            },
+                            splitLine: {
+                                show: false
+                            }
+                        },
+                        yAxis: {
+                            type: 'value',
+                            axisTick: {
+                                inside: true
+                            },
+                            splitLine: {
+                                show: false
+                            },
+                            axisLabel: {
+                                inside: true,
+                                formatter: '{value}\n'
+                            },
+                            z: 10
+                        },
+                        grid: {
+                            top: 110,
+                            left: 15,
+                            right: 15,
+                            height: 160
+                        },
+                        dataZoom: [{
+                            type: 'inside',
+                            throttle: 50
+                        }],
+                        series: [{
+                                name: 'Fake Data',
+                                type: 'line',
+                                smooth: true,
+                                symbol: 'circle',
+                                symbolSize: 5,
+                                sampling: 'average',
+                                itemStyle: {
+                                    color: '#0770FF'
+                                },
+                                stack: 'a',
+                                areaStyle: {
+                                    color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                                            offset: 0,
+                                            color: 'rgba(58,77,233,0.8)'
+                                        },
+                                        {
+                                            offset: 1,
+                                            color: 'rgba(58,77,233,0.3)'
+                                        }
+                                    ])
+                                },
+                                data: data
+                            },
+                            {
+                                name: 'Fake Data',
+                                type: 'line',
+                                smooth: true,
+                                stack: 'a',
+                                symbol: 'circle',
+                                symbolSize: 5,
+                                sampling: 'average',
+                                itemStyle: {
+                                    color: '#F2597F'
+                                },
+                                areaStyle: {
+                                    color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                                            offset: 0,
+                                            color: 'rgba(213,72,120,0.8)'
+                                        },
+                                        {
+                                            offset: 1,
+                                            color: 'rgba(213,72,120,0.3)'
+                                        }
+                                    ])
+                                },
+                                data: data2
+                            }
+                        ]
+                    };
+                    var chartDom = document.getElementById('graficoVendas');
+                    var myChart = echarts.init(chartDom);
+                    myChart.setOption(option);
+                </script>
             </div>
 
         </div>

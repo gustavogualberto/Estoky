@@ -43,8 +43,19 @@ class ProdutoController extends Controller
     }
 
     public function estoque()
-    {
-        return view('site.estoque');
+    {   
+
+         $search = Request('search');
+
+        if ($search) {
+            $produtos = Produto::where([
+                ['nome_produto', 'like', '%' . $search . '%']
+            ])->get();
+        } else {
+            $produtos = Produto::orderBy('nome_produto')->get();
+        }
+
+        return view('site.estoque', compact('produtos', 'search'));
     }
 
     public function ativosList()
@@ -91,4 +102,6 @@ class ProdutoController extends Controller
 
         return view ('site.listagem.produtosSemEstoque', compact('produtos', 'search'));
     }
+
+    
 }
