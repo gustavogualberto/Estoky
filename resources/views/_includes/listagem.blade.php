@@ -18,14 +18,17 @@
                                 @endif
                             </div>
                             <div class="col-4 d-flex justify-content-end align-items-center">
-                                <img src="{{ asset('/img/total.svg') }}" alt="">
+                                @if (Route::currentRouteName() == 'site.produtos')
+                                    <img src="{{ asset('/img/total.svg') }}" alt="">
+                                @else
+                                    <img src="{{ asset('/img/total_des.svg') }}" alt="">
+                                @endif
                             </div>
                         </div>
                     </a>
                 </div>
             </div>
-            <div class="col count-data me-2 shadow-sm p-3 mb-5 bg-body-light rounded bg-white-nav">
-
+            <div class="col count-data me-2 shadow-sm p-3 mb-5 rounded ">
                 <div class="container text-start">
                     <a href="{{ route('site.ativos') }}" class="text-reset text-decoration-none">
                         <div class="row">
@@ -42,14 +45,20 @@
                                 @endif
                             </div>
                             <div class="col-4 d-flex justify-content-end align-items-center">
-                                <img src="{{ asset('/img/ativos.svg') }}" alt="">
+                                @if (Route::currentRouteName() == 'site.ativos')
+                                    <img src="{{ asset('/img/ativos.svg') }}" alt="">
+                                @elseif(Route::currentRouteName() == 'site.produtos')
+                                    <img src="{{ asset('/img/ativos.svg') }}" alt="">
+                                @else
+                                    <img src="{{ asset('/img/ativos_des.svg') }}" alt="">
+                                @endif
                             </div>
                         </div>
                     </a>
                 </div>
             </div>
 
-            <div class="col count-data me-2 shadow-sm p-3 mb-5 bg-body-light rounded bg-white-nav">
+            <div class="col count-data me-2 shadow-sm p-3 mb-5 rounded bg-white-nav">
                 <div class="container text-start">
                     <a href="{{ route('site.inativos') }}" class="text-reset text-decoration-none">
                         <div class="row">
@@ -64,14 +73,20 @@
                                 @endif
                             </div>
                             <div class="col-4 d-flex justify-content-end align-items-center">
-                                <img src="{{ asset('/img/inativos.svg') }}" alt="">
+                                @if (Route::currentRouteName() == 'site.inativos')
+                                    <img src="{{ asset('/img/inativos.svg') }}" alt="">
+                                @elseif(Route::currentRouteName() == 'site.produtos')
+                                    <img src="{{ asset('/img/inativos.svg') }}" alt="">
+                                @else
+                                    <img src="{{ asset('/img/inativos_des.svg') }}" alt="">
+                                @endif
                             </div>
                         </div>
                     </a>
                 </div>
             </div>
 
-            <div class="col count-data me-2 shadow-sm p-3 mb-5 bg-body-light rounded bg-white-nav">
+            <div class="col count-data shadow-sm p-3 mb-5 rounded bg-white-nav">
                 <div class="container text-start">
                     <a href="{{ route('site.sem-estoque') }}" class="text-reset text-decoration-none">
                         <div class="row">
@@ -90,7 +105,13 @@
                                 @endif
                             </div>
                             <div class="col-4 d-flex justify-content-end align-items-center">
-                                <img src="{{ asset('/img/pendentes.svg') }}" alt="">
+                                @if (Route::currentRouteName() == 'site.sem-estoque')
+                                    <img src="{{ asset('/img/pendentes.svg') }}" alt="">
+                                @elseif(Route::currentRouteName() == 'site.produtos')
+                                    <img src="{{ asset('/img/pendentes.svg') }}" alt="">
+                                @else
+                                    <img src="{{ asset('/img/pendentes_des.svg') }}" alt="">
+                                @endif
                             </div>
                         </div>
                     </a>

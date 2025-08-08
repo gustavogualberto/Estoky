@@ -66,7 +66,7 @@
                                     <td class="table-itens-secondary-color">{{ $produto->fornecedor }}</td>
                                     <td class="table-itens-secondary-color">{{ $produto->categoria->categoria }}</td>
                                     <td class="table-itens-secondary-color">R$ {{ $produto->preco_compra }}</td>
-                                    <td class="{{$produto->quantidade == 0 ? 'text-danger' : 'text-success';}} ">{{ $produto->quantidade }}</td>
+                                    <td class="{{$produto->quantidade == 0 ? 'text-danger' : 'text-success';}} ">{{ $produto->quantidade }} unidades</td>
 
 
                                     {{-- TODO funcionalidades botões --}}

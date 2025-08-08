@@ -9,9 +9,9 @@
                     <button class="btn btn-menu text-start d-flex align-items-center"><img src="{{ asset('/img/home.svg') }}"
                             alt="" class="me-2"> Dashboard</button>
                 </div>
-                <div class="row mt-2 ms-2">
-                    <a href="{{ route('site.produtos') }}" class="btn btn-menu text-start d-flex align-items-center"><img
-                            src="{{ asset('/img/orders.svg') }}" alt="" class="me-2"> Produtos</a>
+                <div class="row mt-2 ms-2 ">
+                    <a href="{{ route('site.produtos') }}" class="btn active-button text-start d-flex align-items-center"><img
+                            src="{{ asset('/img/orders.svg') }}" alt="" class="me-2 "> Produtos</a>
                 </div>
                 <div class="row mt-2 ms-2">
                     <a href="{{ route('site.estoque') }}" class="btn btn-menu text-start d-flex align-items-center"><img
@@ -73,7 +73,7 @@
                                 <td class="table-itens-secondary-color">{{ $produto->fornecedor }}</td>
                                 <td class="table-itens-secondary-color">{{ $produto->categoria->categoria }}</td>
                                 <td class="table-itens-secondary-color">R$ {{ $produto->preco_compra }}</td>
-                               <td class="{{$produto->quantidade == 0 ? 'text-danger' : 'text-success';}}">{{ $produto->quantidade }}</td>
+                               <td class="{{$produto->quantidade == 0 ? 'text-danger' : 'text-success';}}">{{ $produto->quantidade }} unidades</td>
 
                                 {{-- TODO funcionalidades botões --}}
 

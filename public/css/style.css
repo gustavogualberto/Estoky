@@ -2,12 +2,13 @@
     background-color: white;
 }
 
-.btn-menu {
-    width: 250px;
-    color: #605C65;
+.active-button {
+    background-color: #f7f3fc !important;
+    color: #605C65 !important;
 }
 
-.btn-menu-active {
+
+.btn-menu {
     width: 250px;
     color: #605C65;
 }
@@ -21,6 +22,10 @@
     background-color: #f7f3fc;
 }
 
+.conteudo-white{
+    background-color: white;
+    padding-right: 1.5rem;
+}
 
 .w-menu-white {
     background-color: white;
