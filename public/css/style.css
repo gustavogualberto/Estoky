@@ -1,3 +1,5 @@
+
+
 .bg-white-nav {
     background-color: white;
 }
@@ -84,4 +86,27 @@
 
 .cursor-pointer {
     cursor: pointer;
+}
+
+.btn-ativo{
+    display: inline-block;
+    text-align: center;
+    background-color: #2be625;
+    color: white;
+    width: 50px;
+    height: 30px;
+    border-radius: 5px;
+    font-size: 14px;
+    line-height: 30px;
+}
+
+.btn-inativo{
+    display: inline-block;
+    text-align: center;
+    background-color: #e62525;
+    color: white;
+    padding: 1px 8px;
+    border-radius: 5px;
+    font-size: 14px;
+    line-height: 30px;
 }

@@ -172,4 +172,6 @@
             chartPizza.resize();
     });
         </script>
+
+    {{-- TODO fazer listagem com progress bar --}}
     @endsection

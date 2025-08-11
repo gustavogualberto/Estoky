@@ -78,8 +78,7 @@
                                 {{-- TODO funcionalidades botões --}}
 
                                 {{-- TODO tirar styles inline --}}
-                                <td><a href="" class="text-secondary" data-bs-toggle="modal"
-                                        data-bs-target="#exampleModal"><i class="bi bi-search btn btn-itens"
+                                <td><a href="{{route('site.visualizar', $produto->id)}}" class="text-secondary"><i class="bi bi-search btn btn-itens"
                                             style="padding: 4px 8px"></i></a>
                                     <a href="" class="text-secondary"><i class="bi bi-pencil-fill btn btn-itens"
                                             style="padding: 4px 8px"></i></a>

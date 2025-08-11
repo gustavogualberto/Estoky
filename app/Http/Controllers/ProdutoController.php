@@ -27,6 +27,13 @@ class ProdutoController extends Controller
         return view('site.produtos', compact('produtos', 'search', 'categorias'));
     }
 
+    public function visualizar($id)
+    {
+        $produto = Produto::find($id);
+
+        return view('site.visualizarProduto', compact('produto'));
+    }
+
     public function salvar(Request $req)
     {
         $dados = $req->all();
