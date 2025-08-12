@@ -81,8 +81,13 @@ class ProdutoController extends Controller
 
         // Mapear dias da semana para português
         $diasSemana = [
-            0 => 'Dom', 1 => 'Seg', 2 => 'Ter', 
-            3 => 'Qua', 4 => 'Qui', 5 => 'Sex', 6 => 'Sáb'
+            0 => 'Dom',
+            1 => 'Seg',
+            2 => 'Ter',
+            3 => 'Qua',
+            4 => 'Qui',
+            5 => 'Sex',
+            6 => 'Sáb'
         ];
         $labels = $dias->map(fn($d) => $diasSemana[Carbon::parse($d)->dayOfWeek]);
 
@@ -105,8 +110,9 @@ class ProdutoController extends Controller
         } else {
             $produtos = Produto::orderBy('nome_produto')->get();
         }
+        $categorias = Categoria::all();
 
-        return view('site.listagem.produtosAtivos', compact('produtos', 'search'));
+        return view('site.listagem.produtosAtivos', compact('produtos', 'search', 'categorias'));
     }
 
     public function inativosList()
@@ -120,8 +126,9 @@ class ProdutoController extends Controller
         } else {
             $produtos = Produto::orderBy('nome_produto')->get();
         }
+          $categorias = Categoria::all();
 
-        return view('site.listagem.produtosInativos', compact('produtos', 'search'));
+        return view('site.listagem.produtosInativos', compact('produtos', 'search', 'categorias'));
     }
 
     public function semEstoque()
@@ -135,7 +142,38 @@ class ProdutoController extends Controller
         } else {
             $produtos = Produto::orderBy('nome_produto')->get();
         }
+          $categorias = Categoria::all();
 
-        return view('site.listagem.produtosSemEstoque', compact('produtos', 'search'));
+        return view('site.listagem.produtosSemEstoque', compact('produtos', 'search', 'categorias'));
+    }
+
+    public function update(Request $req)
+    {
+        $produto = Produto::findOrFail($req->id);
+
+        $dados = $req->all();
+
+        if (isset($dados['status'])) {
+            $dados['status'] = 1; //se status for marcado envia 1 pro banco
+        } else { //caso contrário envia 0
+            $dados['status'] = 0;
+        }
+
+        $produto->update($dados);
+
+        return redirect()->route('site.produtos',  compact('produto'));
+    }
+
+     public function inativar(Request $req)
+    {
+        $produto = Produto::findOrFail($req->id);
+
+        $dados = $req->all();
+
+        $produto->update([
+            'status' => 0,
+        ]);
+
+        return redirect()->route('site.produtos',  compact('produto'));
     }
 }

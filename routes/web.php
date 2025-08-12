@@ -29,4 +29,9 @@ Route::get('/total/produtos/inativos', [ProdutoController::class, 'inativosList'
 
 Route::get('/total/produtos/sem-estoque', [ProdutoController::class, 'semEstoque'])->name('site.sem-estoque');
 
+Route::put('/editar/produto/{id}', [ProdutoController::class, 'update'])->name('site.update');
+
+Route::put('/inativar/produto/{id}', [ProdutoController::class, 'inativar'])->name('site.inativar');
+
+
 

@@ -33,8 +33,8 @@
 
             <div class="row ms-1">
                 <div class="col-6 justify-content-start ">
-                    <h6>Total produtos sem estoque</h6>
-                    <p>Gerencie seus itens de estoque e níveis de inventário</p>
+                    <h5 class="titulo fw-normal">Total de produtos sem estoque</h5>
+                    <p class="corpo">Gerencie seus itens de estoque e níveis de inventário</p>
                 </div>
             </div>
 

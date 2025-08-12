@@ -34,8 +34,8 @@
 
             <div class="row ms-1">
                 <div class="col-6 justify-content-start ">
-                    <h6>Total produtos inativos</h6>
-                    <p>Gerencie seus itens de estoque e níveis de inventário</p>
+                    <h5 class="titulo fw-normal">Inventário de produtos</h5>
+                    <p class="corpo">Gerencie seus itens de estoque e níveis de inventário</p>
                 </div>
             </div>
 
@@ -67,18 +67,22 @@
                                     <td class="table-itens-secondary-color">{{ $produto->fornecedor }}</td>
                                     <td class="table-itens-secondary-color">{{ $produto->categoria->categoria }}</td>
                                     <td class="table-itens-secondary-color">R$ {{ $produto->preco_compra }}</td>
-                                    <td class="{{$produto->quantidade == 0 ? 'text-danger' : 'text-success';}} ">{{ $produto->quantidade }} unidades</td>
+                                    <td class="{{ $produto->quantidade == 0 ? 'text-danger' : 'text-success' }} ">
+                                        {{ $produto->quantidade }} unidades</td>
 
                                     {{-- TODO funcionalidades botões --}}
+                                    <td><a href="{{ route('site.visualizar', $produto->id) }}" class="text-secondary"><i
+                                                class="bi bi-search btn btn-itens" style="padding: 4px 8px"></i></a>
+                                        <a class="text-secondary" data-bs-toggle="modal"
+                                            data-bs-target="#modalEditar-{{ $produto->id }}"><i
+                                                class="bi bi-pencil-fill btn btn-itens" style="padding: 4px 8px"></i></a>
+                                        @include('_includes.modalEditarProduto')
 
+                                        <a class="text-secondary" data-bs-toggle="modal"
+                                            data-bs-target="#modalInativar-{{ $produto->id }}"> <i
+                                                class="bi bi-trash-fill btn btn-item-delete"style="padding: 4px 8px"></i></a>
+                                        @include('_includes.modalInativarProduto')
 
-                                    <td><a href="" class="text-secondary" data-bs-toggle="modal"
-                                            data-bs-target="#exampleModal"><i class="bi bi-search btn btn-itens"
-                                                style="padding: 4px 8px"></i></a>
-                                        <a href="" class="text-secondary"><i class="bi bi-pencil-fill btn btn-itens"
-                                                style="padding: 4px 8px"></i></a>
-                                        <a href="" class="text-secondary "> <i class="bi bi-trash-fill btn btn-itens"
-                                                style="padding: 4px 8px"></i></a>
                                     </td>
                                 </tr>
                             @endif

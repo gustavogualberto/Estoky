@@ -44,7 +44,6 @@
 
 .btn-principal {
     background-color: #8131f8;
-
     color: white;
 }
 
@@ -79,6 +78,16 @@
 
 .btn-itens:hover {
     background-color: rgb(74, 72, 75);
+    color: white;
+}
+
+.btn-item-delete {
+    background-color: #605C65;
+    color: white;
+}
+
+.btn-item-delete:hover {
+    background-color: rgb(214, 73, 68);
     color: white;
 }
 
