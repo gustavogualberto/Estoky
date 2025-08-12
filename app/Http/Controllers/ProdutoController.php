@@ -79,10 +79,16 @@ class ProdutoController extends Controller
         $quantAtual = $dias->map(fn($dia) => $dados[$dia] ?? 0);
         $estoqueIdeal = array_fill(0, 7, 10);
 
+        // Mapear dias da semana para português
+        $diasSemana = [
+            0 => 'Dom', 1 => 'Seg', 2 => 'Ter', 
+            3 => 'Qua', 4 => 'Qui', 5 => 'Sex', 6 => 'Sáb'
+        ];
+        $labels = $dias->map(fn($d) => $diasSemana[Carbon::parse($d)->dayOfWeek]);
 
         return view('site.estoque', compact('produtos', 'search'))
             ->with([
-                'labels' => $dias->map(fn($d) => Carbon::parse($d)->translatedFormat('D')),
+                'labels' => $labels,
                 'quantAtual' => $quantAtual,
                 'estoqueIdeal' => $estoqueIdeal
             ]);

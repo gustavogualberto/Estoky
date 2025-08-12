@@ -2,12 +2,12 @@
 @section('conteudo')
     <div class="container-fluid">
         <div class="row min-vh-100">
-            <div class="col-12 col-md-3 col-lg-2 border-end w-menu-white">
+            <div class="col-12 col-md-3 col-lg-2 border-end w-menu-white ">
                 {{-- menu lateral --}}
-                <p class=" fw-bold mt-3 ">MENU PRINCIPAL</p>
+                <p class=" fw-bold mt-3 titulo">MENU PRINCIPAL</p>
                 <div class="row mt-2 ms-2">
                     <button class="btn btn-menu text-start d-flex align-items-center"><img src="{{ asset('/img/home.svg') }}"
-                            alt="" class="me-2"> Dashboard</button>
+                            alt="" class="me-2 titulo"> Dashboard</button>
                 </div>
                 <div class="row mt-2 ms-2 ">
                     <a href="{{ route('site.produtos') }}" class="btn active-button text-start d-flex align-items-center"><img
@@ -33,8 +33,8 @@
 
             <div class="row ms-1">
                 <div class="col-6 justify-content-start ">
-                    <h6>Inventário de produtos</h6>
-                    <p>Gerencie seus itens de estoque e níveis de inventário</p>
+                    <h5 class="titulo fw-normal">Inventário de produtos</h5>
+                    <p class="corpo" >Gerencie seus itens de estoque e níveis de inventário</p>
                 </div>
 
                 <div class="col-6 d-flex justify-content-end align-items-center">

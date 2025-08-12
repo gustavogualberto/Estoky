@@ -1,5 +1,4 @@
 
-
 .bg-white-nav {
     background-color: white;
 }
@@ -8,7 +7,6 @@
     background-color: #f7f3fc !important;
     color: #605C65 !important;
 }
-
 
 .btn-menu {
     width: 250px;
@@ -91,7 +89,6 @@
 .btn-ativo{
     display: inline-block;
     text-align: center;
-    background-color: #2be625;
     color: white;
     width: 50px;
     height: 30px;
@@ -103,10 +100,41 @@
 .btn-inativo{
     display: inline-block;
     text-align: center;
-    background-color: #e62525;
     color: white;
     padding: 1px 8px;
     border-radius: 5px;
     font-size: 14px;
     line-height: 30px;
+}
+
+.titulo{
+    font-weight: bolder !important;
+}
+
+.corpo{
+    color: #313131;
+}
+
+.linha{
+    border-bottom: 1px solid #C4C4C4;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.produtoTitulo{
+    font-size: 30px;
+    color: black;
+}
+
+.produtoSubTitulo{
+    font-size: 20px;
+    color: black;
+}
+
+.produtoSubInfo{
+    color: #919191;
+}
+
+.produtoInfo{
+    font-size: 24px;
 }

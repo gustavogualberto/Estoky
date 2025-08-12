@@ -65,7 +65,7 @@
                 xAxis: {
                     type: 'category',
                     boundaryGap: false,
-                    data: ['Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sab', 'Dom']
+                    data: @json($labels)
                 },
                 yAxis: {
                     type: 'value',
