@@ -18,9 +18,9 @@ class ProdutoController extends Controller
         if ($search) {
             $produtos = Produto::where([
                 ['nome_produto', 'like', '%' . $search . '%']
-            ])->get();
+            ])->orderBy('status', 'desc')->orderBy('nome_produto', 'asc')->paginate(5);
         } else {
-            $produtos = Produto::orderBy('nome_produto')->get();
+            $produtos = Produto::orderBy('status', 'desc')->orderBy('nome_produto', 'asc')->paginate(5);
         }
         $categorias = Categoria::all();
 

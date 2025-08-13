@@ -1,9 +1,9 @@
 @extends('welcome')
 
 @section('conteudo')
-    <div class="container mt-5 mb-2">
+    <div class="container mt-5 mb-2 bg-white p-4 rounded shadow-sm">
         <div class="row align-items-start">
-            <div class="col-4 col-md-12 mb-5 col-lg-6 ">
+            <div class="col-4 col-md-12 col-lg-6 ">
                 <img src="{{ asset('/img/IMG_20241118_192023 (1) (2).jpg') }}" alt="" class="w-100 rounded-3">
             </div>
             <div class="col ms-5">

@@ -1,3 +1,4 @@
+{{-- TODO ok. Vendas vai ter a coluna produto_id, vendas vai ter a coluna cliente_id --}}
 @extends('welcome')
 @section('conteudo')
     <div class="container-fluid">
@@ -50,8 +51,7 @@
 
             {{-- listagem --}}
             {{-- TODO: colocar background-color no css --}}
-            <div class="container-fluid w-100 p-3 mt-2 shadow-sm p-3 mb-5 bg-body-light rounded"
-                style="background-color: white;">
+            <div class="container-fluid w-100 p-3 mt-2 shadow-sm p-3 mb-5 bg-body-light rounded bg-white">
 
                 <table class="table table-hover ">
                     <thead>
@@ -68,22 +68,35 @@
                     <tbody>
                         @foreach ($produtos as $produto)
                             <tr class="align-middle ">
-                                <td class="fw-bold table-itens-secondary-color"><img src="{{ asset('/img/produtos.svg') }}"
-                                        alt="" class="me-2">{{ $produto->nome_produto }}</td>
-                                <td class="table-itens-secondary-color">{{ $produto->codigo_de_barras }}</td>
-                                <td class="table-itens-secondary-color">{{ $produto->fornecedor }}</td>
-                                <td class="table-itens-secondary-color">{{ $produto->categoria->categoria }}</td>
-                                <td class="table-itens-secondary-color">R$ {{ $produto->preco_compra }}</td>
+                                <td
+                                    class="fw-bold {{ $produto->status == 0 ? 'text-body-tertiary' : 'table-itens-secondary-color' }}">
+                                    <img src="{{ asset('/img/produtos.svg') }}" alt=""
+                                        class="me-2">{{ $produto->nome_produto }}</td>
+                                <td
+                                    class="{{ $produto->status == 0 ? 'text-body-tertiary' : 'table-itens-secondary-color' }}">
+                                    {{ $produto->codigo_de_barras }}</td>
+                                <td
+                                    class="{{ $produto->status == 0 ? 'text-body-tertiary' : 'table-itens-secondary-color' }}">
+                                    {{ $produto->fornecedor }}</td>
+                                <td
+                                    class="{{ $produto->status == 0 ? 'text-body-tertiary' : 'table-itens-secondary-color' }}">
+                                    {{ $produto->categoria->categoria }}</td>
+                                <td
+                                    class="{{ $produto->status == 0 ? 'text-body-tertiary' : 'table-itens-secondary-color' }}">
+                                    R$ {{ $produto->preco_compra }}</td>
                                 <td class="{{ $produto->quantidade == 0 ? 'text-danger' : 'text-success' }}">
                                     {{ $produto->quantidade }} unidades</td>
 
                                 <td><a href="{{ route('site.visualizar', $produto->id) }}" class="text-secondary"><i
                                             class="bi bi-search btn btn-itens" style="padding: 4px 8px"></i></a>
-                                    <a class="text-secondary" data-bs-toggle="modal" data-bs-target="#modalEditar-{{$produto->id}}"><i
+                                    <a class="text-secondary" data-bs-toggle="modal"
+                                        data-bs-target="#modalEditar-{{ $produto->id }}"><i
                                             class="bi bi-pencil-fill btn btn-itens" style="padding: 4px 8px"></i></a>
                                     @include('_includes.modalEditarProduto')
 
-                                    <a class="text-secondary" data-bs-toggle="modal" data-bs-target="#modalInativar-{{$produto->id}}"> <i class="bi bi-trash-fill btn btn-item-delete"style="padding: 4px 8px"></i></a>
+                                    <a class="text-secondary" data-bs-toggle="modal"
+                                        data-bs-target="#modalInativar-{{ $produto->id }}"> <i
+                                            class="bi bi-trash-fill btn btn-item-delete"style="padding: 4px 8px"></i></a>
                                     @include('_includes.modalInativarProduto')
 
                                 </td>
@@ -101,9 +114,11 @@
                 @elseif (count($produtos) == 0)
                     <p class="text-center text-secondary">Você não possui produtos cadastrados.</p>
                 @endif
+                <div class="d-flex justify-content-center mt-4">
+                    {{$produtos->links() }}
+                </div>
             </div>
 
         </div>
-
     </div>
 @endsection

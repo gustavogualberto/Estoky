@@ -72,15 +72,7 @@
                                                          required>
                                                  </div>
                                              </div>
-                                             <div class="col">
-                                                 <div class="mb-3">
-                                                     <label for="exampleFormControlInput1" class="form-label">Data de
-                                                         venda</label>
-                                                     <input type="date" class="form-control"
-                                                         id="exampleFormControlInput1"
-                                                         placeholder="Digite o código do produto" name="data_venda">
-                                                 </div>
-                                             </div>
+
                                          </div>
                                      </div>
                                      <div class="col">

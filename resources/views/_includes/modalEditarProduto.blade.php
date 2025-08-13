@@ -15,15 +15,12 @@
                          <div class="container">
                              <div class="row">
                                  <div class="col">
-                                     <label for="exampleFormControlInput1" class="form-label">Imagem do
-                                         produto</label>
+                                     <label for="exampleFormControlInput1" class="form-label">Imagem do produto</label>
                                      <div class="input-group mb-3">
-                                         <input type="file" class="form-control" id="inputGroupFile01"
-                                             name="imagem">
+                                         <input type="file" class="form-control" id="inputGroupFile01" name="imagem">
                                      </div>
                                      <div class="mb-3">
-                                         <label for="exampleFormControlInput1" class="form-label">Nome do
-                                             produto <span class="required-red">*</span> </label>
+                                         <label for="exampleFormControlInput1" class="form-label">Nome do produto <span class="required-red">*</span> </label>
                                          <input type="text" class="form-control" id="exampleFormControlInput1"
                                              placeholder="Digite o nome do produto" name="nome_produto"
                                              value="{{ $produto->nome_produto }}" required>
@@ -71,22 +68,12 @@
                                                      <label for="exampleFormControlInput1" class="form-label">Data de
                                                          compra <span class="required-red">*</span></label>
                                                      <input type="date" class="form-control"
-                                                         id="exampleFormControlInput1"
-                                                         placeholder="Digite o código do produto" name="data_compra"
+                                                         id="exampleFormControlInput1" name="data_compra"
                                                          value="{{ date('Y-m-d', strtotime($produto->data_compra)) }}"
                                                          required>
                                                  </div>
                                              </div>
-                                             <div class="col">
-                                                 <div class="mb-3">
-                                                     <label for="exampleFormControlInput1" class="form-label">Data de
-                                                         venda</label>
-                                                     <input type="date" class="form-control"
-                                                         id="exampleFormControlInput1"
-                                                         placeholder="Digite o código do produto" name="data_venda"
-                                                         value="{{ date('Y-m-d', strtotime($produto->data_venda)) }}">
-                                                 </div>
-                                             </div>
+
                                          </div>
                                      </div>
                                      <div class="col">
@@ -102,6 +89,7 @@
                                                      <div class="form-check form-switch mt-3">
                                                          <input class="form-check-input" type="checkbox"
                                                              role="switch" id="switchCheckChecked" name="status"
+                                                             {{ $produto->status == 1 ? 'checked' : '' }}
                                                              {{ isset($produto) && $produto->status == 1 ? 'checked' : '' }}
                                                              style="cursor: pointer;">
                                                          <label class="form-check-label" for="switchCheckChecked">
