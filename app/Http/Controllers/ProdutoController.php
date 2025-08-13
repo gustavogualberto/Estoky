@@ -191,7 +191,6 @@ class ProdutoController extends Controller
         $dados = $req->all();
         
         $dados['produto_id'] = $produto->id;
-        
 
         $venda = Venda::create($dados);
 

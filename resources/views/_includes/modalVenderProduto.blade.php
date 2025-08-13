@@ -14,13 +14,13 @@
                      <div class="mb-3">
                          <label for="Cliente" class="form-label">Cliente <span class="required-red">*</span></label>
                             <input type="text" class="form-control" id="exampleFormControlInput1"
-                             placeholder="Digite o nome do cliente" name="cliente" required>
-                         <p class="mt-2 text-secondary fs-6">Não encontrou seu cliente? <a href="{{}}"
-                                 style="color: #8131f8; font-weight: 600;text-decoration: none;">Cadastre aqui</a></p>
+                             placeholder="Digite o nome do cliente" name="cliente" >
+                         <p class="mt-2 text-secondary fs-6">Não encontrei meu cliente. <a href="{{}}"
+                                 style="color: #8131f8; font-weight: 600;text-decoration: none;">Cadastrar</a></p>
                          <label for="Cliente" class="form-label ">Quantidade vendida <span
                                  class="required-red">*</span></label>
                          <input type="number" class="form-control" id="exampleFormControlInput1"
-                             placeholder="Digite a quantidade vendida" name="quantidade" required>
+                             placeholder="Digite o nome do cliente" name="quantidade" required>
                      </div>
                  </div>
                  <div class="modal-footer">
