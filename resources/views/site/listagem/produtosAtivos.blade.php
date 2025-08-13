@@ -7,7 +7,8 @@
                 {{-- menu lateral --}}
                 <p class=" fw-bold mt-3 ">MENU PRINCIPAL</p>
                 <div class="row mt-2 ms-2">
-                    <button class="btn btn-menu text-start d-flex align-items-center" ><img src="{{ asset('/img/home.svg') }}" alt="" class="me-2"> Dashboard</button>
+                    <button class="btn btn-menu text-start d-flex align-items-center"><img src="{{ asset('/img/home.svg') }}"
+                            alt="" class="me-2"> Dashboard</button>
                 </div>
                 <div class="row mt-2 ms-2">
                     <a href="{{ route('site.produtos') }}" class="btn btn-menu text-start d-flex align-items-center"><img
@@ -33,69 +34,26 @@
 
             <div class="row ms-1">
                 <div class="col-6 justify-content-start ">
-                    <h5 class="titulo fw-normal">Total de produtos ativos</h5>
-                    <p class="corpo">Gerencie seus itens de estoque e níveis de inventário</p>
+                    <h5 class="titulo fw-normal">Produtos ativos</h5>
+                    <p class="corpo">Veja e gerencie todos os produtos disponíveis para venda</p>
                 </div>
             </div>
 
             {{-- listagem --}}
-            {{-- TODO: colocar background-color no css --}}
-            <div class="container-fluid w-100 p-3 mt-2 shadow-sm p-3 mb-5 bg-body-light rounded"
-                style="background-color: white;">
+            @include('_includes.listaProdutos')
 
-                <table class="table table-hover ">
-                    <thead>
-                        <tr>
-                            <th class="fw-normal">PRODUTO</th>
-                            <th class="fw-normal">CÓDIGO</th>
-                            <th class="fw-normal">FORNECEDOR</th>
-                            <th class="fw-normal">CATEGORIA</th>
-                            <th class="fw-normal">VALOR</th>
-                            <th class="fw-normal">QUANTIDADE</th>
-                            <th class="fw-normal">AÇÃO</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach ($produtos as $produto)
-                            @if ($produto->status == 1)
-                                <tr class="align-middle ">
-                                    <td class="fw-bold table-itens-secondary-color"><img
-                                            src="{{ asset('/img/produtos.svg') }}" alt=""
-                                            class="me-2">{{ $produto->nome_produto }}</td>
-                                    <td class="table-itens-secondary-color">{{ $produto->codigo_de_barras }}</td>
-                                    <td class="table-itens-secondary-color">{{ $produto->fornecedor }}</td>
-                                    <td class="table-itens-secondary-color">{{ $produto->categoria->categoria }}</td>
-                                    <td class="table-itens-secondary-color">R$ {{ $produto->preco_compra }}</td>
-                                    <td class="{{$produto->quantidade == 0 ? 'text-danger' : 'text-success';}} ">{{ $produto->quantidade }} unidades</td>
 
-                                    <td><a href="{{ route('site.visualizar', $produto->id) }}" class="text-secondary"><i
-                                            class="bi bi-search btn btn-itens" style="padding: 4px 8px"></i></a>
-                                    <a class="text-secondary" data-bs-toggle="modal" data-bs-target="#modalEditar-{{$produto->id}}"><i
-                                            class="bi bi-pencil-fill btn btn-itens" style="padding: 4px 8px"></i></a>
-                                    @include('_includes.modalEditarProduto')
-
-                                    <a class="text-secondary" data-bs-toggle="modal" data-bs-target="#modalInativar-{{$produto->id}}"> <i class="bi bi-trash-fill btn btn-item-delete"style="padding: 4px 8px"></i></a>
-                                    @include('_includes.modalInativarProduto')
-
-                                </td>
-                                </tr>
-                            @endif
-                        @endforeach
-
-                    </tbody>
-
-                </table>
-
-                {{-- TODO Paginação --}}
-
-                @if ($search && count($produtos) == 0)
-                    <p class="text-center text-secondary">Não há resultados para sua pesquisa: "{{ $search }}".</p>
-                @elseif (count($produtos) == 0)
-                    <p class="text-center text-secondary">Você não possui produtos cadastrados.</p>
-                @endif
+            @if ($search && count($produtos) == 0)
+                <p class="text-center text-secondary">Não há resultados para sua pesquisa: "{{ $search }}".</p>
+            @elseif (count($produtos) == 0)
+                <p class="text-center text-secondary">Você não possui produtos cadastrados.</p>
+            @endif
+            <div class="d-flex justify-content-center mt-4">
+                {{ $produtos->links() }}
             </div>
-
         </div>
+
+    </div>
 
 
 

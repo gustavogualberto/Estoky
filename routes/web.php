@@ -33,5 +33,8 @@ Route::put('/editar/produto/{id}', [ProdutoController::class, 'update'])->name('
 
 Route::put('/inativar/produto/{id}', [ProdutoController::class, 'inativar'])->name('site.inativar');
 
+Route::post('/vender/produto/{id}', [ProdutoController::class, 'vender'])->name('site.vender');
+
+
 
 

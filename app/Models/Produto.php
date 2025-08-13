@@ -27,4 +27,9 @@ class Produto extends Model
         return $this -> belongsTo('App\Models\Categoria');
     }
 
+    public function Venda()
+    {
+        return $this -> belongsTo('App\Models\Venda');
+    }
+
 }

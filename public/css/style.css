@@ -91,6 +91,16 @@
     color: white;
 }
 
+.btn-item-sale {
+    background-color: #605C65;
+    color: white;
+}
+
+.btn-item-sale:hover {
+    background-color: rgb(0, 135, 88);
+    color: white;
+}
+
 .cursor-pointer {
     cursor: pointer;
 }
@@ -146,4 +156,24 @@
 
 .produtoInfo{
     font-size: 24px;
+}
+
+.page-link{
+    color: #605C65;
+}
+
+.page-link:hover{
+    color: #605C65;
+    background-color: #f7f3fc;
+}
+
+.bg-selected{
+    background-color: #8131f8 !important;
+    border: none !important;
+}
+
+.bg-selected:hover{
+    background-color: #7523f0 !important;
+    color: white;
+    border: none ;
 }

@@ -5,7 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Produto;
 use App\Models\Categoria;
+use App\Models\Venda;
 use Carbon\Carbon;
+
+//TODO: Corrigir paginação para exibir TODOS os produtos, fora da páginação atual
 
 class ProdutoController extends Controller
 {
@@ -105,10 +108,10 @@ class ProdutoController extends Controller
 
         if ($search) {
             $produtos = Produto::where([
-                ['nome_produto', 'like', '%' . $search . '%']
-            ])->get();
+                ['nome_produto', 'like', '%' . $search . '%'],['status', 1]
+            ])->orderBy('nome_produto', 'asc')->paginate(5);
         } else {
-            $produtos = Produto::orderBy('nome_produto')->get();
+            $produtos = Produto::where('status', 1)->orderBy('nome_produto', 'asc')->paginate(5);
         }
         $categorias = Categoria::all();
 
@@ -121,10 +124,10 @@ class ProdutoController extends Controller
 
         if ($search) {
             $produtos = Produto::where([
-                ['nome_produto', 'like', '%' . $search . '%']
-            ])->get();
+                ['nome_produto', 'like', '%' . $search . '%'],['status', 0]
+            ])->orderBy('nome_produto', 'asc')->paginate(5);
         } else {
-            $produtos = Produto::orderBy('nome_produto')->get();
+            $produtos = Produto::where('status', 0)->orderBy('nome_produto', 'asc')->paginate(5);
         }
           $categorias = Categoria::all();
 
@@ -137,10 +140,10 @@ class ProdutoController extends Controller
 
         if ($search) {
             $produtos = Produto::where([
-                ['nome_produto', 'like', '%' . $search . '%']
-            ])->get();
+                ['nome_produto', 'like', '%' . $search . '%'],['quantidade', 0]
+            ])->orderBy('nome_produto', 'asc')->paginate(5);
         } else {
-            $produtos = Produto::orderBy('nome_produto')->get();
+            $produtos = Produto::where('quantidade', 0)->orderBy('nome_produto', 'asc')->paginate(5);
         }
           $categorias = Categoria::all();
 
@@ -173,6 +176,27 @@ class ProdutoController extends Controller
         $produto->update([
             'status' => 0,
         ]);
+
+        return redirect()->route('site.produtos',  compact('produto'));
+    }
+
+    public function vender(Request $req, $id){
+        $produto = Produto::findOrFail($id);
+
+        $req -> validate([
+            // 'cliente_id' => 'required',
+            // 'data_venda' => 'required',
+            'quantidade' => 'required'
+        ]);
+        $dados = $req->all();
+        
+        $dados['produto_id'] = $produto->id;
+        
+
+        $venda = Venda::create($dados);
+
+        $produto->quantidade -= $req->quantidade;
+        $produto->save();
 
         return redirect()->route('site.produtos',  compact('produto'));
     }
