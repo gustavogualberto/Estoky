@@ -45,7 +45,7 @@
                         Produto</button>
                 </div>
 
-                @include('_includes.modalAdicionarProduto')
+                @include('_includes.modal.modalAdicionarProduto')
 
             </div>
 

@@ -46,17 +46,17 @@
                                        <a class="text-secondary" title="Editar" data-bs-toggle="modal"
                                            data-bs-target="#modalEditar-{{ $produto->id }}"><i
                                                class="bi bi-pencil-fill btn btn-itens" style="padding: 4px 8px"></i></a>
-                                       @include('_includes.modalEditarProduto')
+                                       @include('_includes.modal.modalEditarProduto')
 
                                        <a class="text-secondary" title="Vender" data-bs-toggle="modal"
                                            data-bs-target="#modalVender-{{ $produto->id }}"> <i
                                                class="bi bi-cart-check-fill btn btn-item-sale"style="padding: 4px 8px"></i></a>
-                                       @include('_includes.modalVenderProduto')
+                                       @include('_includes.modal.modalVenderProduto')
 
                                        <a class="text-secondary" title="Inativar" data-bs-toggle="modal"
                                            data-bs-target="#modalInativar-{{ $produto->id }}"> <i
                                                class="bi bi-trash-fill btn btn-item-delete"style="padding: 4px 8px"></i></a>
-                                       @include('_includes.modalInativarProduto')
+                                       @include('_includes.modal.modalInativarProduto')
                                    </td>
                                </tr>
                            @endif
