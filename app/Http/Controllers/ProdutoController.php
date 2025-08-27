@@ -6,13 +6,15 @@ use Illuminate\Http\Request;
 use App\Models\Produto;
 use App\Models\Categoria;
 use App\Models\Venda;
+use App\Models\Banco;
+use App\Models\Cliente;
 use Carbon\Carbon;
+use Facade\FlareClient\Http\Client;
 
 //TODO: Corrigir paginação para exibir TODOS os produtos, fora da páginação atual
 
 class ProdutoController extends Controller
 {
-
 
     public function produtosHome()
     {
@@ -26,8 +28,10 @@ class ProdutoController extends Controller
             $produtos = Produto::orderBy('status', 'desc')->orderBy('nome_produto', 'asc')->paginate(5);
         }
         $categorias = Categoria::all();
+        $clientes = Cliente::all();
+        $vendas = Venda::all();
 
-        return view('site.produtos', compact('produtos', 'search', 'categorias'));
+        return view('site.produtos', compact('produtos', 'search', 'categorias', 'clientes', 'vendas'));
     }
 
     public function visualizar($id)
@@ -46,6 +50,9 @@ class ProdutoController extends Controller
         } else { //caso contrário envia 0
             $dados['status'] = 0;
         }
+    
+        $dados['preco_compra'] = str_replace(',', '.', $req->preco_compra);
+        $dados['preco_venda'] = str_replace(',', '.', $req->preco_venda);
 
         $dados['categoria_id'] = $req->categoria_id;
 
@@ -65,6 +72,11 @@ class ProdutoController extends Controller
         } else {
             $produtos = Produto::orderBy('nome_produto')->get();
         }
+
+        $vendas = Venda::all();
+        $banco = Banco::all();
+        $status = Banco::pluck('status');
+        $saldo = Banco::latest()->value('saldo');
 
         $dias = collect();
         for ($i = 6; $i >= 0; $i--) {
@@ -94,7 +106,7 @@ class ProdutoController extends Controller
         ];
         $labels = $dias->map(fn($d) => $diasSemana[Carbon::parse($d)->dayOfWeek]);
 
-        return view('site.estoque', compact('produtos', 'search'))
+        return view('site.estoque', compact('produtos', 'search', 'vendas', 'banco', 'saldo', 'status'))
             ->with([
                 'labels' => $labels,
                 'quantAtual' => $quantAtual,
@@ -182,21 +194,35 @@ class ProdutoController extends Controller
 
     public function vender(Request $req, $id){
         $produto = Produto::findOrFail($id);
-
         $req -> validate([
             // 'cliente_id' => 'required',
-            // 'data_venda' => 'required',
-            'quantidade' => 'required'
+            'quantidade' => "required|integer|min:1|max:{$produto->quantidade}"
         ]);
         $dados = $req->all();
         
         $dados['produto_id'] = $produto->id;
+        $dados['data_venda'] = Carbon::now();
+
+
 
         $venda = Venda::create($dados);
 
         $produto->quantidade -= $req->quantidade;
+
+        $banco = Banco::latest()->first();
+        $banco->saldo += $produto->preco_compra;
+        $banco->save();
         $produto->save();
 
         return redirect()->route('site.produtos',  compact('produto'));
+    }
+
+    public function cadastrarCliente(Request $req)
+    {
+        $dados = $req->all();
+
+        Cliente::create($dados);
+        return redirect()->route('site.produtos');
+
     }
 }

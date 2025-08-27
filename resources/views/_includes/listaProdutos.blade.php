@@ -43,27 +43,44 @@
                                    <td><a href="{{ route('site.visualizar', $produto->id) }}" class="text-secondary"
                                            title="Visualizar"><i class="bi bi-search btn btn-itens"
                                                style="padding: 4px 8px"></i></a>
-                                       <a class="text-secondary" title="Editar" data-bs-toggle="modal"
-                                           data-bs-target="#modalEditar-{{ $produto->id }}"><i
-                                               class="bi bi-pencil-fill btn btn-itens" style="padding: 4px 8px"></i></a>
+
                                        @include('_includes.modal.modalEditarProduto')
-
-                                       <a class="text-secondary" title="Vender" data-bs-toggle="modal"
-                                           data-bs-target="#modalVender-{{ $produto->id }}"> <i
-                                               class="bi bi-cart-check-fill btn btn-item-sale"style="padding: 4px 8px"></i></a>
-                                       @include('_includes.modal.modalVenderProduto')
-
-                                       <a class="text-secondary" title="Inativar" data-bs-toggle="modal"
-                                           data-bs-target="#modalInativar-{{ $produto->id }}"> <i
-                                               class="bi bi-trash-fill btn btn-item-delete"style="padding: 4px 8px"></i></a>
                                        @include('_includes.modal.modalInativarProduto')
+                                       @include('_includes.modal.modalVenderProduto')
+                                       @include('_includes.modal.modalHistoricoCompras')
+                                       <button
+                                           class="btn btn-item-sale {{ $produto->quantidade == 0 ? 'disabled text-secondary' : '' }}"
+                                           title="Vender" data-bs-toggle="modal"
+                                           data-bs-target="#modalVender-{{ $produto->id }}" style="padding: 4px 8px"
+                                           {{ $produto->quantidade == 0 ? 'disabled aria-disabled="true" tabindex=-1' : '' }}>
+                                           <i class="bi bi-cart-check-fill"></i>
+                                       </button>
+
+                                       <div class="dropdown d-inline">
+                                           <button class="btn btn-itens " type="button" data-bs-toggle="dropdown"
+                                               aria-expanded="false" style="padding: 4px 8px">
+                                               <i class="bi bi-three-dots-vertical"></i>
+                                           </button>
+                                           <ul class="dropdown-menu">
+                                               <li><a class="dropdown-item cursor-pointer" title="Editar"
+                                                       data-bs-toggle="modal"
+                                                       data-bs-target="#modalEditar-{{ $produto->id }}">Editar</a>
+                                               </li>
+                                               <li><a class="dropdown-item btn-item-delete cursor-pointer"
+                                                       title="Inativar" data-bs-toggle="modal"
+                                                       data-bs-target="#modalInativar-{{ $produto->id }}">Excluir</a>
+                                               </li>
+                                               <li><a class="dropdown-item cursor-pointer" title="Historico" data-bs-toggle="modal"
+                                                       data-bs-target="#modalHistorico-{{ $produto->id }}">Histórico</a>
+                                               </li>
+                                           </ul>
+                                       </div>
+
                                    </td>
                                </tr>
                            @endif
                        @endforeach
-
                    </tbody>
-
                </table>
 
                @if ($search && count($produtos) == 0)

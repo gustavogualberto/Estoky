@@ -20,4 +20,9 @@ class Venda extends Model
         return $this->belongsTo(Cliente::class);
     }
 
+    public function produto()
+    {
+        return $this->belongsTo(Produto::class);
+    }
+
 }

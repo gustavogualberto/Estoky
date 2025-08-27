@@ -35,6 +35,9 @@ Route::put('/inativar/produto/{id}', [ProdutoController::class, 'inativar'])->na
 
 Route::post('/vender/produto/{id}', [ProdutoController::class, 'vender'])->name('site.vender');
 
+Route::post('/cadastrar/cliente', [ProdutoController::class, 'cadastrarCliente'])->name('site.cliente');
+
+
 
 
 

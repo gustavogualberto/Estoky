@@ -29,7 +29,7 @@
             </div>
 
             {{-- dashboard --}}
-            @include('_includes.listagem')
+            @include('_includes.filtragem')
 
 
             <div class="row ms-1">

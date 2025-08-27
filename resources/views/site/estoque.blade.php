@@ -29,19 +29,20 @@
             </div>
 
 
-            @include('_includes.listagem')
-        <div class="col-12 col-md-12 col-lg-12 ">
-            <div class="container-fluid">
-                <div class="row g-3 flex-nowrap">
-                    <div id="graficoVendas" class="col-12 col-md-8 conteudo-white p-3 mt-2 shadow-sm mb-5 rounded me-2"
-                        style="height: 300px;">
-                    </div>
-                    <div id="graficoPizza" class="col-12 col-md-4 conteudo-white p-3 mt-2 shadow-sm rounded"
-                        style="height: 300px;">
+            @include('_includes.saldoBancario', ['saldo' => $saldo]) 
+            <div class="col-12 col-md-12 col-lg-12 ">
+                <div class="container-fluid">
+                    <div class="row g-3 flex-nowrap">
+                        <div id="graficoVendas" class="col-12 col-md-8 conteudo-white p-3 mt-2 shadow-sm mb-5 rounded me-2"
+                            style="height: 300px;">
+                        </div>
+                        <div id="graficoPizza" class="col-12 col-md-4 conteudo-white p-3 mt-2 shadow-sm rounded"
+                            style="height: 300px;">
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+
         </div>
         <script>
             option = {
@@ -94,7 +95,7 @@
             var chartDom = document.getElementById('graficoVendas');
             var chartVendas = echarts.init(chartDom);
             chartVendas.setOption(option);
-            
+
 
             option = {
                 tooltip: {
@@ -167,11 +168,10 @@
             var chartPizza = echarts.init(chartDom);
             chartPizza.setOption(option);
 
-            window.addEventListener('resize', function () {
-            chartVendas.resize();
-            chartPizza.resize();
-    });
+            window.addEventListener('resize', function() {
+                chartVendas.resize();
+                chartPizza.resize();
+            });
         </script>
 
-    {{-- TODO fazer listagem com progress bar --}}
     @endsection

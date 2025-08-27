@@ -29,7 +29,7 @@
             </div>
 
             {{-- dashboard --}}
-            @include('_includes.listagem')
+            @include('_includes.filtragem')
 
             <div class="row ms-1">
                 <div class="col-6 justify-content-start ">
@@ -39,7 +39,6 @@
             </div>
 
             {{-- listagem --}}
-            {{-- TODO: colocar background-color no css --}}
                 @include('_includes.listaProdutos')
         </div>
 
